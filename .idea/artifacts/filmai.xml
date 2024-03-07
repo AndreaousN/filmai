@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" name="filmai">
+  <artifact type="jar" name="filmai">
     <output-path>$PROJECT_DIR$/out/artifacts/filmai</output-path>
-    <root id="root">
+    <root id="archive" name="filmai.jar">
       <element id="archive" name="filmai.jar">
         <element id="module-output" name="filmai" />
       </element>

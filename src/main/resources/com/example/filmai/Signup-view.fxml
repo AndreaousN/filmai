@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="400.0" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.filmai.controller.SignupController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="100.0" prefHeight="25.0" prefWidth="110.0" text="Username">
+               <font>
+                  <Font name="Dubai Regular" size="14.0" />
+               </font></Label>
+            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="200.0" prefHeight="25.0" prefWidth="110.0" text="Confirm password" textAlignment="RIGHT">
+               <font>
+                  <Font name="Dubai Regular" size="14.0" />
+               </font></Label>
+            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="150.0" prefHeight="25.0" prefWidth="110.0" text="Password" textAlignment="RIGHT">
+               <font>
+                  <Font name="Dubai Regular" size="14.0" />
+               </font></Label>
+            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="250.0" prefHeight="25.0" prefWidth="110.0" text="Email" textAlignment="RIGHT">
+               <font>
+                  <Font name="Dubai Regular" size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" layoutY="12.0" prefHeight="55.0" prefWidth="400.0" text="Filmai.com" textAlignment="CENTER">
+               <font>
+                  <Font name="Dubai Medium" size="30.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="0.5545023696682464" endY="0.4075829383886256" startX="0.48815165876777256" startY="0.4075829383886256">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.007662835249042145">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.007662835249042145">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.233716475095785">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.2835249042145594">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7188055456807676">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7662835249042141">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.9923371647509576">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.8289473652839661" green="0.03837719187140465" blue="0.03837719187140465" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill></Label>
+            <Label fx:id="signupStatus" alignment="CENTER" layoutX="15.0" layoutY="295.0" prefHeight="50.0" prefWidth="370.0" textFill="#eb0c0c">
+               <font>
+                  <Font name="Dubai Regular" size="13.0" />
+               </font></Label>
+            <TextField fx:id="username" layoutX="185.0" layoutY="100.0" prefHeight="25.0" prefWidth="173.0">
+               <tooltip>
+                  <Tooltip />
+               </tooltip>
+            </TextField>
+            <PasswordField fx:id="password" layoutX="185.0" layoutY="150.0" prefHeight="25.0" prefWidth="173.0">
+                    <tooltip>
+                       <Tooltip />
+                    </tooltip>
+            </PasswordField>
+            <PasswordField fx:id="confirmedPassword" layoutX="185.0" layoutY="200.0" prefHeight="25.0" prefWidth="173.0">
+                    <tooltip>
+                       <Tooltip />
+                    </tooltip>
+            </PasswordField>
+            <TextField fx:id="email" layoutX="185.0" layoutY="250.0" prefHeight="25.0" prefWidth="173.0">
+                    <tooltip>
+                       <Tooltip />
+                    </tooltip>
+            </TextField>
+            <Button fx:id="signUp" layoutX="140.0" layoutY="350.0" mnemonicParsing="false" onAction="#onSignUpButtonClick" prefHeight="25.0" prefWidth="102.0" text="Sign up">
+               <font>
+                  <Font name="Dubai Regular" size="14.0" />
+               </font></Button>
+         </children></Pane>
+   </children>
+</GridPane>
