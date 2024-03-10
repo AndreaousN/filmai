@@ -40,7 +40,7 @@ public class LoginController {
     }
 
     @FXML
-    public void onLoginButtonClick() {
+    public void onLoginButtonClick(ActionEvent event) throws IOException {
         String nameOfTheUser = username.getText();
         String userPassword = password.getText();
         if (Validation.isValidUsername(nameOfTheUser) && Validation.isValidPassword(userPassword)) {
@@ -52,6 +52,7 @@ public class LoginController {
                 boolean isValidPassword = BCryptPassword.checkPassword(userPassword, passwordDataBase);
                 if (isValidPassword) {
                     loginStatus.setText("Successfully entered database username and password");
+                    goToDashboard(event);
                 } else {
                     loginStatus.setText("Wrong username or password");
                 }
@@ -72,6 +73,17 @@ public class LoginController {
         Stage signupStage = new Stage();
         signupStage.setTitle("Sign up");
         signupStage.setScene(new Scene(root, 400, 415));
+        signupStage.show();
+        //Kodas reikalingas paslepti pries tai buvusi langa
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    public void goToDashboard(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(MainApplication.class.getResource("Dashboard-view.fxml"));
+        Stage signupStage = new Stage();
+        signupStage.setTitle("Dashboard");
+        signupStage.setScene(new Scene(root, 850, 600));
         signupStage.show();
         //Kodas reikalingas paslepti pries tai buvusi langa
         ((Node) (event.getSource())).getScene().getWindow().hide();

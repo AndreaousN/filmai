@@ -8,4 +8,5 @@ module com.example.filmai {
     exports com.example.filmai;
     exports com.example.filmai.controller;
     opens com.example.filmai.controller to javafx.fxml;
+    opens com.example.filmai.model to javafx.base;
 }
