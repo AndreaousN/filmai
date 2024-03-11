@@ -5,6 +5,7 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private boolean isAdmin;
 
     public User(){}
 
@@ -15,10 +16,19 @@ public class User {
         this.email = email;
     }
 
-    public User(String username, String password, String email) {
+    public User(String username, String password, String email, boolean isAdmin) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.isAdmin = isAdmin;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 
     public int getId() {
@@ -60,6 +70,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", isAdmin=" + isAdmin +
                 '}';
     }
 }

@@ -15,19 +15,19 @@
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="100.0" prefHeight="25.0" prefWidth="110.0" text="Username">
+            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="85.0" prefHeight="25.0" prefWidth="110.0" text="Username">
                <font>
                   <Font name="Dubai Regular" size="14.0" />
                </font></Label>
-            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="200.0" prefHeight="25.0" prefWidth="110.0" text="Confirm password" textAlignment="RIGHT">
+            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="185.0" prefHeight="25.0" prefWidth="110.0" text="Confirm password" textAlignment="RIGHT">
                <font>
                   <Font name="Dubai Regular" size="14.0" />
                </font></Label>
-            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="150.0" prefHeight="25.0" prefWidth="110.0" text="Password" textAlignment="RIGHT">
+            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="135.0" prefHeight="25.0" prefWidth="110.0" text="Password" textAlignment="RIGHT">
                <font>
                   <Font name="Dubai Regular" size="14.0" />
                </font></Label>
-            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="250.0" prefHeight="25.0" prefWidth="110.0" text="Email" textAlignment="RIGHT">
+            <Label alignment="TOP_RIGHT" layoutX="42.0" layoutY="235.0" prefHeight="25.0" prefWidth="110.0" text="Email" textAlignment="RIGHT">
                <font>
                   <Font name="Dubai Regular" size="14.0" />
                </font></Label>
@@ -90,22 +90,22 @@
                <font>
                   <Font name="Dubai Regular" size="13.0" />
                </font></Label>
-            <TextField fx:id="username" layoutX="185.0" layoutY="100.0" prefHeight="25.0" prefWidth="173.0">
+            <TextField fx:id="username" layoutX="185.0" layoutY="85.0" prefHeight="25.0" prefWidth="173.0">
                <tooltip>
                   <Tooltip />
                </tooltip>
             </TextField>
-            <PasswordField fx:id="password" layoutX="185.0" layoutY="150.0" prefHeight="25.0" prefWidth="173.0">
+            <PasswordField fx:id="password" layoutX="185.0" layoutY="135.0" prefHeight="25.0" prefWidth="173.0">
                     <tooltip>
                        <Tooltip />
                     </tooltip>
             </PasswordField>
-            <PasswordField fx:id="confirmedPassword" layoutX="185.0" layoutY="200.0" prefHeight="25.0" prefWidth="173.0">
+            <PasswordField fx:id="confirmedPassword" layoutX="185.0" layoutY="185.0" prefHeight="25.0" prefWidth="173.0">
                     <tooltip>
                        <Tooltip />
                     </tooltip>
             </PasswordField>
-            <TextField fx:id="email" layoutX="185.0" layoutY="250.0" prefHeight="25.0" prefWidth="173.0">
+            <TextField fx:id="email" layoutX="185.0" layoutY="235.0" prefHeight="25.0" prefWidth="173.0">
                     <tooltip>
                        <Tooltip />
                     </tooltip>
@@ -114,6 +114,21 @@
                <font>
                   <Font name="Dubai Regular" size="14.0" />
                </font></Button>
+            <RadioButton fx:id="isAdmin" layoutX="200.0" layoutY="275.0" mnemonicParsing="false" text="Admin">
+               <font>
+                  <Font name="Dubai Regular" size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="isUser" layoutX="280.0" layoutY="275.0" mnemonicParsing="false" text="User">
+               <font>
+                  <Font name="Dubai Regular" size="14.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="124.0" layoutY="275.0" text="Role">
+               <font>
+                  <Font name="Dubai Regular" size="14.0" />
+               </font>
+            </Label>
          </children></Pane>
    </children>
 </GridPane>

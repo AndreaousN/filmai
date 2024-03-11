@@ -6,9 +6,15 @@ import java.util.ArrayList;
 public class MovieDAO {
     private static final String URL = "jdbc:mysql://localhost:3306/db";
     private static String query;
-    public static ArrayList<Movie> searchByName(String movieName) {
-        query = "SELECT * FROM movies WHERE movieName LIKE ?";
-
+    public static ArrayList<Movie> searchByName(String movieName, String role) {
+        // Admin iesko tarp visu filmu
+        if (role.equals("admin")) {
+            query = "SELECT * FROM movies WHERE movieName LIKE ?";
+        } else {
+            // user iesko tik tarp savo irasu
+            int userID = UserDAO.searchByUsernameReturnID(UserSingleton.getInstance().getUsername());
+            query = "SELECT * FROM movies WHERE movieName LIKE ? AND userID = " + userID;
+        }
         ArrayList<Movie> list = new ArrayList<>();
         try {
             Connection connection = DriverManager.getConnection(URL, "root", "");
@@ -22,7 +28,8 @@ public class MovieDAO {
                         resultSet.getInt("duration"),
                         resultSet.getString("actors"),
                         resultSet.getString("directors"),
-                        resultSet.getInt("releaseYear")
+                        resultSet.getInt("releaseYear"),
+                        resultSet.getInt("userID")
                 ));
             }
             preparedStatement.close();
@@ -32,18 +39,19 @@ public class MovieDAO {
         }
         return list;
     }
+
     public static void create(Movie movie) {
-        query = "INSERT INTO movies(movieID, movieName, duration, actors, directors, releaseYear)\n" +
+        query = "INSERT INTO movies(movieName, duration, actors, directors, releaseYear, userID)\n" +
                 "VALUES (?, ?, ?, ?, ?, ?);";
         try {
             Connection connection = DriverManager.getConnection(URL, "root", "");
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, movie.getMovieID());
-            preparedStatement.setString(2, movie.getMovieTitle());
-            preparedStatement.setInt(3, movie.getMovieDuration());
-            preparedStatement.setString(4, movie.getActors());
-            preparedStatement.setString(5, movie.getDirectors());
-            preparedStatement.setInt(6, movie.getReleaseYear());
+            preparedStatement.setString(1, movie.getMovieTitle());
+            preparedStatement.setInt(2, movie.getMovieDuration());
+            preparedStatement.setString(3, movie.getActors());
+            preparedStatement.setString(4, movie.getDirectors());
+            preparedStatement.setInt(5, movie.getReleaseYear());
+            preparedStatement.setInt(6, movie.getUserID());
             preparedStatement.executeUpdate();
             System.out.println("Sėkmingai sukurtas įrašas duomenų bazėje!");
         } catch (SQLException e) {
@@ -84,6 +92,24 @@ public class MovieDAO {
             System.out.println("There was an error deleting your item. More: "
                     + e.getMessage());
         }
+    }
+    public static ArrayList<Integer> getMovieIdNumbers() {
+        query = "SELECT movieID FROM movies;";
+        ArrayList<Integer> list = new ArrayList<>();
+        try {
+            Connection connection = DriverManager.getConnection(URL, "root", "");
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                list.add(resultSet.getInt("movieID"));
+            }
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("There was an error deleting your item. More: "
+                    + e.getMessage());
+        }
+        return list;
     }
 }
 

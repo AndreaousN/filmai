@@ -2,6 +2,7 @@ package com.example.filmai.controller;
 
 import com.example.filmai.MainApplication;
 import com.example.filmai.model.UserDAO;
+import com.example.filmai.model.UserSingleton;
 import com.example.filmai.utils.BCryptPassword;
 import com.example.filmai.utils.Validation;
 import javafx.event.ActionEvent;
@@ -52,6 +53,8 @@ public class LoginController {
                 boolean isValidPassword = BCryptPassword.checkPassword(userPassword, passwordDataBase);
                 if (isValidPassword) {
                     loginStatus.setText("Successfully entered database username and password");
+                    UserSingleton userSingleton = UserSingleton.getInstance();
+                    userSingleton.setUsername(nameOfTheUser);
                     goToDashboard(event);
                 } else {
                     loginStatus.setText("Wrong username or password");
@@ -83,7 +86,7 @@ public class LoginController {
         Parent root = FXMLLoader.load(MainApplication.class.getResource("Dashboard-view.fxml"));
         Stage signupStage = new Stage();
         signupStage.setTitle("Dashboard");
-        signupStage.setScene(new Scene(root, 850, 600));
+        signupStage.setScene(new Scene(root, 850, 650));
         signupStage.show();
         //Kodas reikalingas paslepti pries tai buvusi langa
         ((Node) (event.getSource())).getScene().getWindow().hide();

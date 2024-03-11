@@ -33,6 +33,12 @@ public class SignupController {
     private Label signupStatus;
 
     @FXML
+    private RadioButton isAdmin;
+
+    @FXML
+    private RadioButton isUser;
+
+    @FXML
     public void initialize() {
         Tooltip usernameTooltip = new Tooltip();
         usernameTooltip.setText("Must have length of 5-13\nCan contain upper and " +
@@ -76,7 +82,7 @@ public class SignupController {
         } else {
             signupStatus.setText("Login successful");
             String encryptedBCryptPassword = BCryptPassword.hashPassword(userPassword);
-            User user1 = new User(nameOfTheUser, encryptedBCryptPassword, userEmail);
+            User user1 = new User(nameOfTheUser, encryptedBCryptPassword, userEmail, isAdmin.isSelected());
             UserDAO.create(user1);
             goToSignInWindow(event);
         }
