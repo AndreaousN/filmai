@@ -230,7 +230,7 @@ public class DashboardController {
                 year = releaseDate.getSelectionModel().getSelectedItem().toString();
             }
 
-            if (!Validation.isValidMovieID(idOfMovie)) {
+            if (Validation.isValidMovieID(idOfMovie)) {
                 status.setText("Enter movie database ID");
             } else if (!Validation.isValidMovieName(nameOfMovie)) {
                 status.setText("Enter a movie name");
@@ -260,14 +260,18 @@ public class DashboardController {
         String idOfMovie = movieID.getText();
         ArrayList<Integer> idList = MovieDAO.getMovieIdNumbers();
         if (roleStatus.getText().equals("admin")) {
-            int idMovie = Integer.parseInt(idOfMovie);
-            if (!Validation.isValidMovieID(idOfMovie)) {
-                status.setText("Enter movie database ID");
-            } else if (!idList.contains(idMovie)) {
-                status.setText("Error: Movie ID out of bound.");
+            if (idOfMovie.isEmpty()) {
+                status.setText("Enter movie ID");
+            } else if (Validation.isValidMovieID(idOfMovie)) {
+                status.setText("Wrong input. Must contain only numbers");
             } else {
-                MovieDAO.delete(idMovie);
-                status.setText("Successfully deleted item from the database");
+                int idMovie = Integer.parseInt(idOfMovie);
+                if (!idList.contains(idMovie)) {
+                    status.setText("Error: Movie ID out of bound.");
+                } else {
+                    MovieDAO.delete(idMovie);
+                    status.setText("Successfully deleted item from the database");
+                }
             }
         } else {
             status.setText("You do not have permission to delete an item");

@@ -35,7 +35,7 @@ public class Validation {
     public static boolean isValidMovieID(String movieID) {
         Pattern pattern = Pattern.compile(MOVIE_ID_REGEX_PATTERN);
         Matcher matcher = pattern.matcher(movieID);
-        return matcher.find();
+        return !matcher.find();
     }
 
     public static boolean isValidPassword(String password) {
